@@ -22,9 +22,11 @@ function mySolution(n) {
 	return answer;
 }
 
+// 재귀를 이용
+// 오 세상에 이렇게도 된다니
 function othersSolution(n, arr = []) {
 	arr.push(n);
 	if (n === 1) return arr;
-	if (n % 2 === 0) return solution(n / 2, arr);
-	return solution(3 * n + 1, arr);
+	if (n % 2 === 0) return othersSolution(n / 2, arr);
+	return othersSolution(3 * n + 1, arr);
 }
