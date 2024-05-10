@@ -19,3 +19,24 @@
 function mySolution(x1, x2, x3, x4) {
 	return (x1 || x2) && (x3 || x4);
 }
+
+// 문제를 이해하고 알기 쉽게 푼 풀이
+function othersSolution(x1, x2, x3, x4) {
+	let result = false;
+	let A = false;
+	let B = false;
+
+	if (x1 || x2) {
+		A = true;
+	}
+
+	if (x3 || x4) {
+		B = true;
+	}
+
+	if (A && B) {
+		result = true;
+	}
+
+	return result;
+}
