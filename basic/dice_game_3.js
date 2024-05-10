@@ -28,22 +28,30 @@
     모든 값이 다른 경우
         (a!=b && b!=c && c!=d && d!=a)
 
+    4 2 5 5
 
 */
 
 function mySolution(a, b, c, d) {
-	let p, q, r;
 	if (a == b && b == c && c == d) {
 		return 1111 * a;
-	} else if ((a == b && b == c) || (b == c && c == d) || (c == d && d == a) || (a == b && b == d) || (a == c && c == d)) {
-		p = a;
-		q = d;
-		return 10 * p * q * 2;
-	} else if ((a == b && c == d) || (a == c && b == d) || (a == d && b == c)) {
-		return (p + q) * Math.abs(p - q);
-	} else if ((a == b && c !== d) || (a == c && b != d) || (a == d && b != c) || (b == c && a != d) || (b == d && a != c)) {
-		return q * r;
-	} else {
-		return Math.min(a, b, c, d);
 	}
+
+	if (a == b && b == c && d !== a) return (10 * a + d) ** 2;
+	if (a == b && b == d && c !== a) return (10 * a + c) ** 2;
+	if (a == c && c == d && b !== a) return (10 * a + b) ** 2;
+	if (b == c && c == d && a !== b) return (10 * b + a) ** 2;
+
+	if (a == b && c == d) return (a + c) * Math.abs(a - c);
+	if (a == c && b == d) return (a + b) * Math.abs(a - b);
+	if (a == d && b == c) return (a + b) * Math.abs(a - b);
+
+	if (a == b && c !== d && d !== a) return c * d;
+	if (a == c && b !== d && d !== a) return b * d;
+	if (a == d && b != c && c !== a) return b * c;
+	if (b == c && a != d && d !== b) return a * d;
+	if (b == d && a != c && c !== b) return a * c;
+	if (c == d && a !== b && b !== c) return a * b;
+
+	return Math.min(a, b, c, d);
 }
